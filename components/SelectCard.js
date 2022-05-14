@@ -8,10 +8,10 @@ import style from '../styles/card.module.scss'
 
 const SelectCard = (props) => {
   const router = useRouter();
-  const { asPath, locale } = router;
+  const { asPath } = router;
 
   const handleChooseCard = () => {
-    router.push(`${asPath.slice(1)}/${props.name}`, null, { locale, scroll: false })
+    router.push(`${asPath.slice(1)}/${props.name}`, undefined, { scroll: false, shallow: true })
   }
 
   return (

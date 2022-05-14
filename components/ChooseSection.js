@@ -6,7 +6,7 @@ import ChooseCard from './ChooseCard'
 
 const ChooseSection = (props) => {
   const router = useRouter()
-  const { fid, did, sid1, sid2, sid3, sid4 } = router.query
+  const { sid1, sid2, sid3, sid4 } = router.query
 
   const isActive = (index, name) => {
     switch (index) {
@@ -24,6 +24,10 @@ const ChooseSection = (props) => {
     }
   }
 
+  const isDisabled = (index) => {
+    return index < props.data.length - 1
+  }
+
   return props.data.map((e, index) => (
     <Row className="justify-content-center mt-5" key={index}>
       <Col xs={12}>
@@ -35,7 +39,7 @@ const ChooseSection = (props) => {
         <Row className="justify-content-center">
           {e?.items.map((item, j) => (
             <Col key={j}>
-              <ChooseCard active={isActive(index, item.name)} {...item} />
+              <ChooseCard active={isActive(index, item.name)} disabled={isDisabled(index)} {...item} />
             </Col>
           ))}
         </Row>

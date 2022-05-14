@@ -18,7 +18,7 @@ const Header = (props) => {
             </Col>
             <Col xs="auto">
               <Link href="/login">
-                <Button variant="outline-primary ml-auto">Login</Button>
+                <Button variant="primary">Login</Button>
               </Link>
             </Col>
           </Row>
