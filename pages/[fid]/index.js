@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { Col, Container, Row, Spinner } from 'react-bootstrap'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import SelectCard from '../components/SelectCard'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import SelectCard from '../../components/SelectCard'
 
-export default function Home() {
+export default function DataSource() {
   const router = useRouter();
-  const [features, setFeatures] = useState([]);
+  const [dataSources, setDataSources] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const { fid } = router.query;
 
-  const getFeatures = async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ROOT}/api/features`, {
+  const getDataSources = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ROOT}/api/features/data-sources`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -25,33 +26,36 @@ export default function Home() {
     }
 
     const res = await response.json();
-    setFeatures(res.data)
+    setDataSources(res.data)
   }
 
   useEffect(() => {
-    getFeatures();
+    getDataSources();
   }, []);
 
   return (
     <Container fluid className="main-container">
       <Head>
-        <title>Notus Pro</title>
-        <meta name="description" content="Home | Notus Pro" />
+        <title>{fid} | Notus Pro</title>
+        <meta name="description" content={`${fid} | Notus Pro`} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header title="Let's Start by Onboarding your Data" description="This is a simple example of Data Onboarding in the Platform. The upcoming releases will include Access Provisioning, Search, Approval Workflow and many other exciting features." />
+      <Header title={fid} />
       <Container className="main-content py-5">
         <Row className="justify-content-center">
           {loaded ? <Col lg={10} xs={12}>
             <Row className="justify-content-center mb-5">
               <Col className="text-center">
-                <h4 className="text-warning">FEATURES</h4>
-                <h1 className="">What can you do on our platform?</h1>
+                <h4 className="text-primary">{fid}</h4>
+                <h1 className="">Let's push your data to the cloud without any hassle</h1>
               </Col>
             </Row>
             <Row className="justify-content-center">
-              {features?.map((feature, index) => <Col xs={12} lg={3} key={index}>
+              <Col xs={12}>
+                <h4 className="text-muted text-center mb-4">Choose your Data Source:</h4>
+              </Col>
+              {dataSources?.map((feature, index) => <Col xs={12} lg={4} key={index}>
                 <SelectCard {...feature}/>
               </Col>)}
             </Row>
