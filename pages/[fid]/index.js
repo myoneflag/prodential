@@ -49,7 +49,7 @@ export default function DataSource() {
             <Row className="justify-content-center mb-5">
               <Col className="text-center">
                 <h4 className="text-primary">{fid}</h4>
-                <h1 className="">Let's push your data to the cloud without any hassle</h1>
+                <h1 className="">Let&#39;s push your data to the cloud without any hassle</h1>
               </Col>
             </Row>
             <Row className="justify-content-center">
