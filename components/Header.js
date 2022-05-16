@@ -14,7 +14,7 @@ const Header = (props) => {
           <Row className="align-items-center py-5">
             <Col>
               <Link href="/">
-                <Image src="/logo.png" width="auto" height="auto" alt="logo" className={style.logo} />
+                <Image src="/logo.png" width={240} height={55} alt="logo" className={style.logo} />
               </Link>
             </Col>
             <Col xs="auto">
