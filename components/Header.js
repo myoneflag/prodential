@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Col, Container, Row, Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import Image from 'next/image'
 
 import style from '../styles/header.module.scss'
 
@@ -13,7 +14,7 @@ const Header = (props) => {
           <Row className="align-items-center py-5">
             <Col>
               <Link href="/">
-                <img src="/logo.png" width="auto" height="auto" alt="logo" className={style.logo} />
+                <Image src="/logo.png" width="auto" height="auto" alt="logo" className={style.logo} />
               </Link>
             </Col>
             <Col xs="auto">

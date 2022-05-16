@@ -34,6 +34,7 @@ export default function Section() {
 
   useEffect(() => {
     getDataSources()
+    // eslint-disable-next-line
   }, [])
 
   return (

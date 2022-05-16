@@ -31,6 +31,7 @@ export default function DataSource() {
 
   useEffect(() => {
     getDataSources();
+    // eslint-disable-next-line
   }, []);
 
   return (
