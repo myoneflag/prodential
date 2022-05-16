@@ -46,7 +46,10 @@ export default function Section() {
       }
   
       const data = await response.json();
-      console.log(formData)
+      console.log('response =>', data)
+      for (let [key, value] of formData.entries()) { 
+        console.log(key, "=>", value);
+      }
     } catch (err) {
       console.error(err)
       setLoading(false)
